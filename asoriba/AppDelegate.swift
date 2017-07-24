@@ -17,6 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        //let layout = UICollectionViewFlowLayout()
+        //layout.scrollDirection = .horizontal
+        //window?.rootViewController = UINavigationController(rootViewController: feedVC(collectionViewLayout: layout))
+        window?.rootViewController = tabBarVC()
+        
+        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 0, green: 165, blue: 240)
+        
+        //remove the navigation Bar shodow
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        //set status bar style to wite or black
+        application.statusBarStyle = .lightContent
+        //set status bar background color manually
+        let statusBarBackgroundColor = UIView()
+        statusBarBackgroundColor.backgroundColor = UIColor.rgb(red: 0, green: 165, blue: 240)
+        //add it to the main window as sub view
+        window?.addSubview(statusBarBackgroundColor)
+        //add some constraint
+        //left to right or with or x-axis
+        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundColor)
+        //top to bottom or height or y-axis
+        window?.addConstraintsWithFormat(format: "V:|[v0(20)]", views: statusBarBackgroundColor)
+        
         return true
     }
 
