@@ -1,0 +1,6 @@
+framework module Pods_asoriba {
+  umbrella header "Pods-asoriba-umbrella.h"
+
+  export *
+  module * { export * }
+}
